@@ -1,0 +1,21 @@
+{
+  "name": "advanced-typescript",
+  "version": "1.0.0",
+  "description": "learning advanced typescript",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf js && mkdir js",
+    "build-only": "tsc -w --outDir js",
+    "tsc": "tsc",
+    "start": "node js/app.js"
+  },
+  "author": "muzikayise flynn buthelezi (zuluCoda)",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.6.2"
+  }
+}
