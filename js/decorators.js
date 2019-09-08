@@ -13,4 +13,30 @@ function sealed(name) {
     };
 }
 exports.sealed = sealed;
+/**
+ * Logger Decorator
+ * @param target
+ */
+function logger(target) {
+    var newConstructor = function () {
+        console.log("Creating new instance.");
+        console.log(target);
+    };
+    newConstructor.prototype = Object.create(target.prototype);
+    newConstructor.prototype.constructor = target;
+    return newConstructor;
+}
+exports.logger = logger;
+/**
+ * writeable methods decorator
+ * @param isWriteable
+ */
+function writeable(isWriteable) {
+    return function (target, propertyKey, descriptor) {
+        var settingTo = isWriteable ? '' : 'to be read-only.';
+        console.log("Setting " + propertyKey + " " + settingTo);
+        descriptor.writable = isWriteable;
+    };
+}
+exports.writeable = writeable;
 //# sourceMappingURL=decorators.js.map

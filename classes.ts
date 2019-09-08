@@ -1,5 +1,5 @@
 import * as Interfaces from './interfaces';
-import { sealed } from './decorators'
+import {sealed, logger, writeable} from './decorators'
 class Employee {
     title: string;
 
@@ -18,12 +18,14 @@ class Reseacher {
     }
 }
 
+@logger
 class UniversityLibrarian implements Interfaces.Librarian, Employee, Reseacher {
     
     name: string;
     email: string;
     department: string;
-    
+
+    @writeable(true)
     assistCustomer(custName: string) {
         console.log(this.name + ' is assisting ' + custName);
     }
@@ -41,12 +43,14 @@ class UniversityLibrarian implements Interfaces.Librarian, Employee, Reseacher {
 }
 
 @sealed('UniversityLibrarianSealed')
+@logger
 class UniversityLibrarianSealed implements Interfaces.Librarian, Employee, Reseacher {
 
     name: string;
     email: string;
     department: string;
 
+    @writeable(false)
     assistCustomer(custName: string) {
         console.log(this.name + ' is assisting ' + custName);
     }

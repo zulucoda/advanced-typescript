@@ -34,6 +34,12 @@ var UniversityLibrarian = /** @class */ (function () {
     UniversityLibrarian.prototype.assistCustomer = function (custName) {
         console.log(this.name + ' is assisting ' + custName);
     };
+    __decorate([
+        decorators_1.writeable(true)
+    ], UniversityLibrarian.prototype, "assistCustomer", null);
+    UniversityLibrarian = __decorate([
+        decorators_1.logger
+    ], UniversityLibrarian);
     return UniversityLibrarian;
 }());
 exports.UniversityLibrarian = UniversityLibrarian;
@@ -43,8 +49,12 @@ var UniversityLibrarianSealed = /** @class */ (function () {
     UniversityLibrarianSealed.prototype.assistCustomer = function (custName) {
         console.log(this.name + ' is assisting ' + custName);
     };
+    __decorate([
+        decorators_1.writeable(false)
+    ], UniversityLibrarianSealed.prototype, "assistCustomer", null);
     UniversityLibrarianSealed = __decorate([
-        decorators_1.sealed('UniversityLibrarianSealed')
+        decorators_1.sealed('UniversityLibrarianSealed'),
+        decorators_1.logger
     ], UniversityLibrarianSealed);
     return UniversityLibrarianSealed;
 }());

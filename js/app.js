@@ -180,8 +180,22 @@ function isBook(text) {
         - Properties
         - Parameters
  */
+// class decorators
 {
     var lib1 = new classes_1.UniversityLibrarianSealed();
+    var lib2 = new classes_1.UniversityLibrarian();
+}
+// property & methods decorator
+{
+    var lib1 = new classes_1.UniversityLibrarianSealed();
+    var lib2 = new classes_1.UniversityLibrarian();
+    try {
+        lib1.assistCustomer = function () { return console.log('assistCustomer replacement method'); };
+        lib2.assistCustomer = function () { return console.log('assistCustomer replacement method'); };
+    }
+    catch (e) {
+        console.log(e.message);
+    }
 }
 //=========================================================================
 //# sourceMappingURL=app.js.map

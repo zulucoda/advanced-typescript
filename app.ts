@@ -205,8 +205,23 @@ function isBook(text: Book | Magazine): text is Book {
         - Parameters
  */
 
+// class decorators
 {
     const lib1 = new UniversityLibrarianSealed();
+    const lib2 = new UniversityLibrarian();
+}
+
+// property & methods decorator
+{
+    const lib1 = new UniversityLibrarianSealed();
+    const lib2 = new UniversityLibrarian();
+
+    try {
+        lib1.assistCustomer = () => console.log('assistCustomer replacement method');
+        lib2.assistCustomer = () => console.log('assistCustomer replacement method');
+    }catch (e) {
+        console.log(e.message);
+    }
 }
 
 //=========================================================================
