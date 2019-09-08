@@ -168,5 +168,20 @@ function isBook(text) {
     }
 }
 //=========================================================================
+/*
+    Decorators
+    What are decorators?
+    - Declarative programming
+    - Implemented as functions
+    - May be attached to the following:
+        - Classes
+        - Methods
+        - Accessors
+        - Properties
+        - Parameters
+ */
+{
+    var lib1 = new classes_1.UniversityLibrarianSealed();
+}
 //=========================================================================
 //# sourceMappingURL=app.js.map

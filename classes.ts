@@ -1,5 +1,5 @@
 import * as Interfaces from './interfaces';
-
+import { sealed } from './decorators'
 class Employee {
     title: string;
 
@@ -24,6 +24,29 @@ class UniversityLibrarian implements Interfaces.Librarian, Employee, Reseacher {
     email: string;
     department: string;
     
+    assistCustomer(custName: string) {
+        console.log(this.name + ' is assisting ' + custName);
+    }
+
+    // implementation of mixing function
+    title: string;
+
+    addToSchedule: () => void;
+
+    doResearch: (topic: string) => void;
+
+    logTitle: () => void;
+
+
+}
+
+@sealed('UniversityLibrarianSealed')
+class UniversityLibrarianSealed implements Interfaces.Librarian, Employee, Reseacher {
+
+    name: string;
+    email: string;
+    department: string;
+
     assistCustomer(custName: string) {
         console.log(this.name + ' is assisting ' + custName);
     }
@@ -65,4 +88,4 @@ abstract class ReferenceItem {
     abstract printCitation(): void;
 }
 
-export { UniversityLibrarian, ReferenceItem, Employee, Reseacher };
+export { UniversityLibrarian, UniversityLibrarianSealed, ReferenceItem, Employee, Reseacher };

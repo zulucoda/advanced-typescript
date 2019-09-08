@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './interfaces';
-import { UniversityLibrarian, ReferenceItem, Reseacher,Employee } from './classes';
+import { UniversityLibrarian, ReferenceItem, Reseacher,Employee, UniversityLibrarianSealed } from './classes';
 import * as util from './lib/utilityFunctions';
 import './LibrarianExtension';
 
@@ -191,5 +191,22 @@ function isBook(text: Book | Magazine): text is Book {
 }
 
 //=========================================================================
+
+/*
+    Decorators
+    What are decorators?
+    - Declarative programming
+    - Implemented as functions
+    - May be attached to the following:
+        - Classes
+        - Methods
+        - Accessors
+        - Properties
+        - Parameters
+ */
+
+{
+    const lib1 = new UniversityLibrarianSealed();
+}
 
 //=========================================================================
