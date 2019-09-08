@@ -11,11 +11,13 @@
     "clean": "rm -rf js && mkdir js",
     "build-only": "tsc -w --outDir js",
     "tsc": "tsc",
-    "start": "node js/app.js"
+    "start": "node js/app.js",
+    "lint": "tslint -c tslint.json app.ts"
   },
   "author": "muzikayise flynn buthelezi (zuluCoda)",
   "license": "ISC",
   "devDependencies": {
+    "tslint": "^5.19.0",
     "typescript": "^3.6.2"
   }
 }

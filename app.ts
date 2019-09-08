@@ -1,22 +1,21 @@
-import { Category } from './enums';
-import { Book, Logger, Author, Librarian, Magazine } from './interfaces';
-import { UniversityLibrarian, ReferenceItem, Reseacher,Employee, UniversityLibrarianSealed } from './classes';
-import * as util from './lib/utilityFunctions';
-import './LibrarianExtension';
+import { Employee, ReferenceItem, Reseacher, UniversityLibrarian, UniversityLibrarianSealed } from "./classes";
+import { Category } from "./enums";
+import { Author, Book, Librarian, Logger, Magazine } from "./interfaces";
+import * as util from "./lib/utilityFunctions";
+import "./LibrarianExtension";
 
 function PrintBookInfo({title: bookTitle, author: bookAuthor}: Book): void {
     console.log(`${bookTitle} was authored by ${bookAuthor}`);
 }
 
-let [book1, book2] = util.GetAllBooks();
+const [book1, book2] = util.GetAllBooks();
 PrintBookInfo(book1);
 PrintBookInfo(book2);
-
 
 function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
     PrintBookInfo(book1);
     PrintBookInfo(book2);
-    console.log(others)
+    console.log(others);
 }
 
 // LogFavoriteBooks(util.GetAllBooks());
@@ -24,15 +23,15 @@ function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
 /*
   Tuple Type: Key, Value pair
  */
-const tuple: [string, Book] = ['A 123.456', book1];
+const tuple: [string, Book] = ["A 123.456", book1];
 
-interface KeyValuePair<K, V> extends Array<K | V>{
+interface KeyValuePair<K, V> extends Array<K | V> {
     0: K;
     1: V;
 }
 
-const tuple2: KeyValuePair<string, Book> = ['A 123.456', book1];
-//===============================================================================
+const tuple2: KeyValuePair<string, Book> = ["A 123.456", book1];
+// ===============================================================================
 
 /*
     Unions and Intersections
@@ -42,7 +41,7 @@ const allMagazines: Magazine[] = util.GetAllMagazines();
 
 const readingMaterial: Book | Magazine = allBooks[0];
 
-function PrintTile(item: Book | Magazine):void {
+function PrintTile(item: Book | Magazine): void {
     console.log(item.title);
 }
 PrintTile(allBooks[0]);
@@ -50,12 +49,12 @@ PrintTile(allMagazines[0]);
 
 const serialNovel: Book & Magazine = {
     ...book1,
-    ...allMagazines[0]
+    ...allMagazines[0],
 };
 
 console.log(JSON.stringify(serialNovel, null, 2));
 
-//=========================================================================
+// =========================================================================
 
 /*
     Mixins
@@ -63,8 +62,8 @@ console.log(JSON.stringify(serialNovel, null, 2));
  */
 
 function applyMixins(derivedCtor: any, baseCtors: any[]) {
-    baseCtors.forEach(baseCtors => {
-       Object.getOwnPropertyNames(baseCtors.prototype).forEach(name => {
+    baseCtors.forEach((baseCtors) => {
+       Object.getOwnPropertyNames(baseCtors.prototype).forEach((name) => {
            derivedCtor.prototype[name] = baseCtors.prototype[name];
        });
     });
@@ -74,21 +73,20 @@ applyMixins(UniversityLibrarian, [Employee, Reseacher]);
 
 const newLibrarian = new UniversityLibrarian();
 
-newLibrarian.doResearch('Alfa Romeo Cars');
-//=========================================================================
+newLibrarian.doResearch("Alfa Romeo Cars");
+// =========================================================================
 
 /*
     String Liter Types & Type Aliases
  */
 
+const empCategory: "Manager" | "Non-Manager" = "Manager"; // can be one or the other
 
-const empCategory: 'Manager' | 'Non-Manager' = "Manager"; // can be one or the other
-
-type EmployeeCategory = 'Manager' | 'Non-Manager';
+type EmployeeCategory = "Manager" | "Non-Manager";
 
 const empCategory2: EmployeeCategory = "Non-Manager";
 
-//=========================================================================
+// =========================================================================
 
 /*
  Polymorphic this Type
@@ -97,34 +95,34 @@ const empCategory2: EmployeeCategory = "Non-Manager";
  */
 
 class LibraryBook {
-    Checkout(): this {
-        console.log('Checking out a book.');
+    public Checkout(): this {
+        console.log("Checking out a book.");
         return this;
     }
 
-    Checkin(): this {
+    public Checkin(): this {
         // console.log('Checking in a book.');
         if (this instanceof ChildrensBook) {
-            console.log('Checking in a ChildrensBook.');
+            console.log("Checking in a ChildrensBook.");
         }
 
         if (this instanceof ElectronicBook) {
-            console.log('Checking in a ElectronicBook.');
+            console.log("Checking in a ElectronicBook.");
         }
         return this;
     }
 }
 
 class ChildrensBook extends LibraryBook {
-    Clean(): this {
-        console.log('Cleaning a book');
+    public Clean(): this {
+        console.log("Cleaning a book");
         return this;
     }
 }
 
 class ElectronicBook extends LibraryBook {
-    RemoveFromCustomerDevice(): this {
-        console.log('Removing book from device.');
+    public RemoveFromCustomerDevice(): this {
+        console.log("Removing book from device.");
         return this;
     }
 }
@@ -136,7 +134,7 @@ kidBook.Checkin().Clean().Checkout();
 const eBook = new ElectronicBook();
 eBook.Checkin().RemoveFromCustomerDevice().Checkout();
 
-//=========================================================================
+// =========================================================================
 
 /*
     Declaration merging
@@ -149,12 +147,11 @@ eBook.Checkin().RemoveFromCustomerDevice().Checkout();
 // mergedBook.
 {
     const newLibrarian = new UniversityLibrarian();
-    newLibrarian.phone = '555-6789';
-    newLibrarian.hostSeminar('British Literature');
+    newLibrarian.phone = "555-6789";
+    newLibrarian.hostSeminar("British Literature");
 }
 
-
-//=========================================================================
+// =========================================================================
 
 /*
   Type Guard
@@ -163,34 +160,34 @@ eBook.Checkin().RemoveFromCustomerDevice().Checkout();
  */
 
 interface Vehicle {
-    numberOfWheels: number
+    numberOfWheels: number;
 }
 
-function isVehicle(v: any):v is Vehicle {
-    return (<Vehicle>v).numberOfWheels !== undefined;
+function isVehicle(v: any): v is Vehicle {
+    return (v as Vehicle).numberOfWheels !== undefined;
 }
 
 {
     const car: Vehicle = {
-        numberOfWheels: 4
+        numberOfWheels: 4,
     };
     console.log(`is vehicle: ${isVehicle(car)}`);
 }
 
 function isBook(text: Book | Magazine): text is Book {
-    return (<Book>text).author !== undefined;
+    return (text as Book).author !== undefined;
 }
 
 {
-    let readingMaterial: Book | Magazine = util.GetAllBooks()[0];
-    if (isBook(readingMaterial)){
+    const readingMaterial: Book | Magazine = util.GetAllBooks()[0];
+    if (isBook(readingMaterial)) {
         console.log(`The book's author is ${readingMaterial.author}`);
-    }else{
+    } else {
         // console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
     }
 }
 
-//=========================================================================
+// =========================================================================
 
 /*
     Decorators
@@ -217,11 +214,11 @@ function isBook(text: Book | Magazine): text is Book {
     const lib2 = new UniversityLibrarian();
 
     try {
-        lib1.assistCustomer = () => console.log('assistCustomer replacement method');
-        lib2.assistCustomer = () => console.log('assistCustomer replacement method');
-    }catch (e) {
+        lib1.assistCustomer = () => console.log("assistCustomer replacement method");
+        lib2.assistCustomer = () => console.log("assistCustomer replacement method");
+    } catch (e) {
         console.log(e.message);
     }
 }
 
-//=========================================================================
+// =========================================================================
