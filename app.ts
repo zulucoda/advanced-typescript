@@ -19,3 +19,15 @@ function LogFavoriteBooks([book1, book2, ...others]: Book[]) {
 }
 
 // LogFavoriteBooks(util.GetAllBooks());
+
+/*
+  Tuple Type: Key, Value pair
+ */
+const tuple: [string, Book] = ['A 123.456', book1];
+
+interface KeyValuePair<K, V> extends Array<K | V>{
+    0: K;
+    1: V;
+}
+
+const tuple2: KeyValuePair<string, Book> = ['A 123.456', book1];

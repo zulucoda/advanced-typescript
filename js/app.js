@@ -15,4 +15,9 @@ function LogFavoriteBooks(_a) {
     console.log(others);
 }
 // LogFavoriteBooks(util.GetAllBooks());
+/*
+  Tuple Type: Key, Value pair
+ */
+var tuple = ['A 123.456', book1];
+var tuple2 = ['A 123.456', book1];
 //# sourceMappingURL=app.js.map
