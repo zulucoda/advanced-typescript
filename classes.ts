@@ -1,6 +1,24 @@
 import * as Interfaces from './interfaces';
 
-class UniversityLibrarian implements Interfaces.Librarian {
+class Employee {
+    title: string;
+
+    addToSchedule(): void {
+        console.log('Employee added to schedule');
+    }
+
+    logTitle(): void {
+        console.log(`Employee has the title ${this.title}`);
+    }
+}
+
+class Reseacher {
+    doResearch(topic: string): void {
+        console.log(`Doing research on ${topic}.`);
+    }
+}
+
+class UniversityLibrarian implements Interfaces.Librarian, Employee, Reseacher {
     
     name: string;
     email: string;
@@ -9,6 +27,17 @@ class UniversityLibrarian implements Interfaces.Librarian {
     assistCustomer(custName: string) {
         console.log(this.name + ' is assisting ' + custName);
     }
+
+    // implementation of mixing function
+    title: string;
+
+    addToSchedule: () => void;
+
+    doResearch: (topic: string) => void;
+
+    logTitle: () => void;
+
+
 }
 
 abstract class ReferenceItem {
@@ -36,4 +65,4 @@ abstract class ReferenceItem {
     abstract printCitation(): void;
 }
 
-export { UniversityLibrarian, ReferenceItem };
+export { UniversityLibrarian, ReferenceItem, Employee, Reseacher };

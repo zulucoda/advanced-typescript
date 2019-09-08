@@ -1,5 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var Employee = /** @class */ (function () {
+    function Employee() {
+    }
+    Employee.prototype.addToSchedule = function () {
+        console.log('Employee added to schedule');
+    };
+    Employee.prototype.logTitle = function () {
+        console.log("Employee has the title " + this.title);
+    };
+    return Employee;
+}());
+exports.Employee = Employee;
+var Reseacher = /** @class */ (function () {
+    function Reseacher() {
+    }
+    Reseacher.prototype.doResearch = function (topic) {
+        console.log("Doing research on " + topic + ".");
+    };
+    return Reseacher;
+}());
+exports.Reseacher = Reseacher;
 var UniversityLibrarian = /** @class */ (function () {
     function UniversityLibrarian() {
     }

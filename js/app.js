@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var classes_1 = require("./classes");
 var util = require("./lib/utilityFunctions");
 function PrintBookInfo(_a) {
     var bookTitle = _a.title, bookAuthor = _a.author;
@@ -31,6 +32,10 @@ function LogFavoriteBooks(_a) {
  */
 var tuple = ['A 123.456', book1];
 var tuple2 = ['A 123.456', book1];
+//===============================================================================
+/*
+    Unions and Intersections
+ */
 var allBooks = util.GetAllBooks();
 var allMagazines = util.GetAllMagazines();
 var readingMaterial = allBooks[0];
@@ -41,4 +46,20 @@ PrintTile(allBooks[0]);
 PrintTile(allMagazines[0]);
 var serialNovel = __assign(__assign({}, book1), allMagazines[0]);
 console.log(JSON.stringify(serialNovel, null, 2));
+//=========================================================================
+/*
+    Mixins
+
+ */
+function applyMixins(derivedCtor, baseCtors) {
+    baseCtors.forEach(function (baseCtors) {
+        Object.getOwnPropertyNames(baseCtors.prototype).forEach(function (name) {
+            derivedCtor.prototype[name] = baseCtors.prototype[name];
+        });
+    });
+}
+applyMixins(classes_1.UniversityLibrarian, [classes_1.Employee, classes_1.Reseacher]);
+var newLibrarian = new classes_1.UniversityLibrarian();
+newLibrarian.doResearch('Alfa Romeo Cars');
+//=========================================================================
 //# sourceMappingURL=app.js.map

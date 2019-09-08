@@ -1,6 +1,6 @@
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './interfaces';
-import { UniversityLibrarian, ReferenceItem } from './classes';
+import { UniversityLibrarian, ReferenceItem, Reseacher,Employee } from './classes';
 import * as util from './lib/utilityFunctions';
 
 function PrintBookInfo({title: bookTitle, author: bookAuthor}: Book): void {
@@ -31,7 +31,11 @@ interface KeyValuePair<K, V> extends Array<K | V>{
 }
 
 const tuple2: KeyValuePair<string, Book> = ['A 123.456', book1];
+//===============================================================================
 
+/*
+    Unions and Intersections
+ */
 const allBooks: Book[] = util.GetAllBooks();
 const allMagazines: Magazine[] = util.GetAllMagazines();
 
@@ -49,3 +53,25 @@ const serialNovel: Book & Magazine = {
 };
 
 console.log(JSON.stringify(serialNovel, null, 2));
+
+//=========================================================================
+
+/*
+    Mixins
+
+ */
+
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+    baseCtors.forEach(baseCtors => {
+       Object.getOwnPropertyNames(baseCtors.prototype).forEach(name => {
+           derivedCtor.prototype[name] = baseCtors.prototype[name];
+       });
+    });
+}
+
+applyMixins(UniversityLibrarian, [Employee, Reseacher]);
+
+const newLibrarian = new UniversityLibrarian();
+
+newLibrarian.doResearch('Alfa Romeo Cars');
+//=========================================================================
