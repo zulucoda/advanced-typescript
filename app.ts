@@ -75,3 +75,16 @@ const newLibrarian = new UniversityLibrarian();
 
 newLibrarian.doResearch('Alfa Romeo Cars');
 //=========================================================================
+
+/*
+    String Liter Types & Type Aliases
+ */
+
+
+const empCategory: 'Manager' | 'Non-Manager' = "Manager"; // can be one or the other
+
+type EmployeeCategory = 'Manager' | 'Non-Manager';
+
+const empCategory2: EmployeeCategory = "Non-Manager";
+
+//=========================================================================

@@ -62,4 +62,10 @@ applyMixins(classes_1.UniversityLibrarian, [classes_1.Employee, classes_1.Reseac
 var newLibrarian = new classes_1.UniversityLibrarian();
 newLibrarian.doResearch('Alfa Romeo Cars');
 //=========================================================================
+/*
+    String Liter Types & Type Aliases
+ */
+var empCategory = "Manager"; // can be one or the other
+var empCategory2 = "Non-Manager";
+//=========================================================================
 //# sourceMappingURL=app.js.map
