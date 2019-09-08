@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -67,5 +80,56 @@ newLibrarian.doResearch('Alfa Romeo Cars');
  */
 var empCategory = "Manager"; // can be one or the other
 var empCategory2 = "Non-Manager";
+//=========================================================================
+/*
+ Polymorphic this Type
+
+ Method chaining
+ */
+var LibraryBook = /** @class */ (function () {
+    function LibraryBook() {
+    }
+    LibraryBook.prototype.Checkout = function () {
+        console.log('Checking out a book.');
+        return this;
+    };
+    LibraryBook.prototype.Checkin = function () {
+        // console.log('Checking in a book.');
+        if (this instanceof ChildrensBook) {
+            console.log('Checking in a ChildrensBook.');
+        }
+        if (this instanceof ElectronicBook) {
+            console.log('Checking in a ElectronicBook.');
+        }
+        return this;
+    };
+    return LibraryBook;
+}());
+var ChildrensBook = /** @class */ (function (_super) {
+    __extends(ChildrensBook, _super);
+    function ChildrensBook() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ChildrensBook.prototype.Clean = function () {
+        console.log('Cleaning a book');
+        return this;
+    };
+    return ChildrensBook;
+}(LibraryBook));
+var ElectronicBook = /** @class */ (function (_super) {
+    __extends(ElectronicBook, _super);
+    function ElectronicBook() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ElectronicBook.prototype.RemoveFromCustomerDevice = function () {
+        console.log('Removing book from device.');
+        return this;
+    };
+    return ElectronicBook;
+}(LibraryBook));
+var kidBook = new ChildrensBook();
+kidBook.Checkin().Clean().Checkout();
+var eBook = new ElectronicBook();
+eBook.Checkin().RemoveFromCustomerDevice().Checkout();
 //=========================================================================
 //# sourceMappingURL=app.js.map
