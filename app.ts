@@ -155,3 +155,41 @@ eBook.Checkin().RemoveFromCustomerDevice().Checkout();
 
 
 //=========================================================================
+
+/*
+  Type Guard
+
+    typeof or instanceof
+ */
+
+interface Vehicle {
+    numberOfWheels: number
+}
+
+function isVehicle(v: any):v is Vehicle {
+    return (<Vehicle>v).numberOfWheels !== undefined;
+}
+
+{
+    const car: Vehicle = {
+        numberOfWheels: 4
+    };
+    console.log(`is vehicle: ${isVehicle(car)}`);
+}
+
+function isBook(text: Book | Magazine): text is Book {
+    return (<Book>text).author !== undefined;
+}
+
+{
+    let readingMaterial: Book | Magazine = util.GetAllBooks()[0];
+    if (isBook(readingMaterial)){
+        console.log(`The book's author is ${readingMaterial.author}`);
+    }else{
+        // console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+    }
+}
+
+//=========================================================================
+
+//=========================================================================

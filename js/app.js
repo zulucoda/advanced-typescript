@@ -146,5 +146,27 @@ eBook.Checkin().RemoveFromCustomerDevice().Checkout();
     newLibrarian_1.phone = '555-6789';
     newLibrarian_1.hostSeminar('British Literature');
 }
+function isVehicle(v) {
+    return v.numberOfWheels !== undefined;
+}
+{
+    var car = {
+        numberOfWheels: 4
+    };
+    console.log("is vehicle: " + isVehicle(car));
+}
+function isBook(text) {
+    return text.author !== undefined;
+}
+{
+    var readingMaterial_1 = util.GetAllBooks()[0];
+    if (isBook(readingMaterial_1)) {
+        console.log("The book's author is " + readingMaterial_1.author);
+    }
+    else {
+        // console.log(`The magazine's publisher is ${readingMaterial.publisher}`);
+    }
+}
+//=========================================================================
 //=========================================================================
 //# sourceMappingURL=app.js.map
