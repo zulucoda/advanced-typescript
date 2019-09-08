@@ -2,6 +2,7 @@ import { Category } from './enums';
 import { Book, Logger, Author, Librarian, Magazine } from './interfaces';
 import { UniversityLibrarian, ReferenceItem, Reseacher,Employee } from './classes';
 import * as util from './lib/utilityFunctions';
+import './LibrarianExtension';
 
 function PrintBookInfo({title: bookTitle, author: bookAuthor}: Book): void {
     console.log(`${bookTitle} was authored by ${bookAuthor}`);
@@ -134,5 +135,23 @@ kidBook.Checkin().Clean().Checkout();
 
 const eBook = new ElectronicBook();
 eBook.Checkin().RemoveFromCustomerDevice().Checkout();
+
+//=========================================================================
+
+/*
+    Declaration merging
+    merging to interfaces
+
+    module orgementation
+ */
+
+// const mergedBook: Book = book1;
+// mergedBook.
+{
+    const newLibrarian = new UniversityLibrarian();
+    newLibrarian.phone = '555-6789';
+    newLibrarian.hostSeminar('British Literature');
+}
+
 
 //=========================================================================

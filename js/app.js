@@ -26,6 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var classes_1 = require("./classes");
 var util = require("./lib/utilityFunctions");
+require("./LibrarianExtension");
 function PrintBookInfo(_a) {
     var bookTitle = _a.title, bookAuthor = _a.author;
     console.log(bookTitle + " was authored by " + bookAuthor);
@@ -131,5 +132,19 @@ var kidBook = new ChildrensBook();
 kidBook.Checkin().Clean().Checkout();
 var eBook = new ElectronicBook();
 eBook.Checkin().RemoveFromCustomerDevice().Checkout();
+//=========================================================================
+/*
+    Declaration merging
+    merging to interfaces
+
+    module orgementation
+ */
+// const mergedBook: Book = book1;
+// mergedBook.
+{
+    var newLibrarian_1 = new classes_1.UniversityLibrarian();
+    newLibrarian_1.phone = '555-6789';
+    newLibrarian_1.hostSeminar('British Literature');
+}
 //=========================================================================
 //# sourceMappingURL=app.js.map
