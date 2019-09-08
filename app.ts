@@ -31,3 +31,21 @@ interface KeyValuePair<K, V> extends Array<K | V>{
 }
 
 const tuple2: KeyValuePair<string, Book> = ['A 123.456', book1];
+
+const allBooks: Book[] = util.GetAllBooks();
+const allMagazines: Magazine[] = util.GetAllMagazines();
+
+const readingMaterial: Book | Magazine = allBooks[0];
+
+function PrintTile(item: Book | Magazine):void {
+    console.log(item.title);
+}
+PrintTile(allBooks[0]);
+PrintTile(allMagazines[0]);
+
+const serialNovel: Book & Magazine = {
+    ...book1,
+    ...allMagazines[0]
+};
+
+console.log(JSON.stringify(serialNovel, null, 2));
